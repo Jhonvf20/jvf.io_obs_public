@@ -1,0 +1,90 @@
+<!-- Modal -->
+<div class="jvf-bootstrap">
+    <div class="modal fade" id="jvfIoFastInspecModal" aria-labelledby="jvfIoFastInspec-label">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" id="jvfIoFastInspectVue">
+                <div class="modal-header text-bg-danger">
+                    <h5 class="modal-title" id="jvfIoFastInspec-label" style="font-size: 20px !important;">
+                        <i class="icon jvf-icon-l-search me-1"></i>
+                        Fast Inspect Utilities
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-bg-dark">
+                    <div class="fast-inspect-grid">
+                        <div class="fast-inspect-buttons-grid">
+                            <div class="d-grid gap-2">
+                                <button type="button" class="btn btn-success" v-on:click="ClearCache('lov')">
+                                    <i class="icon jvf-icon-clear-data"></i> 
+                                    Clear LOV Cache
+                                </button>
+                                <button type="button" class="btn btn-info" v-on:click="ClearCache('rte')">
+                                    <i class="icon jvf-icon-calendar-day-view"></i> 
+                                    Clear RTE Cache
+                                </button>
+                                <button type="button" class="btn btn-danger" v-on:click="ClearCache('resp')">
+                                    <i class="icon jvf-icon-personal-trainer"></i> 
+                                    Clear RESP Cache
+                                </button>
+                            </div>
+                        </div>
+                        <div class="fast-inspect-content-grid">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="jvf-ws">Workspace</span>
+                                <input type="text" class="form-control" placeholder="Search..." aria-label="Workspace" aria-describedby="jvf-ws" v-model="wsName" v-on:keyup.enter="SearchWorkspace">
+                                <div class="input-group-text">
+                                    <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Keep Context" v-model="keepContext">
+                                </div>
+                            </div>
+        
+                            <p v-if="resultInspect != ''" class="text-warning">Workspace: {{ resultInspect }} successful inspected, going back to previous view if applicable.</p>
+        
+                            <p v-if="message != ''" class="text-warning">{{ message }}</p>
+        
+                            <div class="d-flex justify-content-center" v-if="running">
+                                <div class="spinner-grow text-danger" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+        
+                            <ul class="jvf-ws-list" v-if="!running">
+                                <li v-for="(ws, index) in wsList">
+                                    <a href="#" v-on:click="InspectWorkspace(index)">{{ ws }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div v-if="helpState">
+                        <p>Welcome to Inspect Workspace UI</p>
+                        <p>Search Input accepts several formats:</p>
+                        <ul class="jvf-list">
+                            <li>An exact workspace name: dev_devait12_text_utils</li>
+                            <li>A search pattern of workspace name: *devait12*</li>
+                            <li>An exact search spec for Repository Workspace BC: [Parent Name] = "Release 21" AND [Created By] = LoginId()</li>
+                            <li>Leave it empty to search most recent undelivered workspaces.</li>
+                            <li>Go to the last view in history when successful inspected.</li>
+                            <li>Check the flag to force keep actual context.</li>
+                            <li>Clear cache buttons without leave actual context.</li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="modal-footer text-bg-dark">
+                    <p class="me-auto">jvf.io()</p>
+                    <button type="button" class="btn btn-info" v-on:click="ShowHelp">
+                        <i class="icon jvf-icon-question-mark"></i> 
+                        {{ helpText }} 
+                    </button>
+                    <button type="button" class="btn btn-success" v-on:click="SearchWorkspace">
+                        <i class="icon jvf-icon-magnifier"></i>
+                        Search
+                    </button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                        <i class="icon jvf-icon-d-remove-1"></i>
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

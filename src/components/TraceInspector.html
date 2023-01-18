@@ -1,0 +1,102 @@
+<div class="jvf-bootstrap">
+    <div id="jvfIoTraceInspectorModal" class="modal fade" role="dialog" data-bs-backdrop="static">
+        <div class="modal-dialog modal-fullscreen" role="document">
+            <div id="jvfIoTraceInspectorVue" class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h4 class="modal-title" style="font-size: 20px !important;">
+                        <i class="icon jvf-icon-home-search me-1"></i>
+                        Trace Inspector
+                    </h4>
+                    <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-dark text-white">
+                    <div class="trace-inspector-grid">
+                        <div class="selectors-grid">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">File Path</span>
+                                <input class="form-control" type="text" v-model="filePath"/>
+                                <button class="btn btn-success" type="button"> + </button>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Slow Query Threshold (ms)</span>
+                                <input class="form-control" type="number" v-model="slowQueryThreshold" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Retain File</span>
+                                <select class="form-select" v-model="retainFileSelected">
+                                    <option v-for="(option, index) in optionsRetainFile" :value="option" :key="index">{{ option }}</option>
+                                </select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Trace Type</span>
+                                <select class="form-select" v-model="traceTypeSelected">
+                                    <option v-for="(option, index) in optionsTraceType" :value="option" :key="index">{{ option }}</option>
+                                </select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Additional Event Tracing</span>
+                                <select class="form-select" v-model="additionalSelected">
+                                    <option v-for="(option, index) in optionsAdditional" :value="option" :key="index">{{ option }}</option>
+                                </select>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-info" type="button" v-on:click="ShowStatistics">
+                                    <i class="icon jvf-icon-statistics"></i> 
+                                    {{ statisticsButton }}
+                                </button>
+                                <button class="btn btn-danger" type="button" v-on:click="ShowWorstQueries">
+                                    <i class="icon jvf-icon-turtle"></i> 
+                                    {{ slowestQueriesButton }}
+                                </button>
+                                <button class="btn btn-light" type="button" v-on:click="RemoveRRTrace">
+                                    <i class="icon jvf-icon-crane"></i> 
+                                    {{ rrQuerysButton }}
+                                </button>
+                                <button class="btn btn-purple" type="button" v-on:click="ConvertCurrentTrace">
+                                    <i class="icon jvf-icon-chemistry"></i> 
+                                    {{ buildQueryButton }}
+                                </button>
+                                <button class="btn btn-success" type="button" v-on:click="WrapCode">
+                                    <i class="icon jvf-icon-statistics"></i> 
+                                    {{ wrapCodeButton }}
+                                </button>
+                            </div>
+                            <div v-if="helpState" class="m-2">
+                                <p>Welcome to Trace Inspector</p>
+                                <ul class="jvf-list">
+                                    <li>Works in All Context.</li>
+                                    <li>Clic Run Trace to initialize the trace, all querys in app will be captured.</li>
+                                    <li>Stop and View to analize all queries.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="trace-terminal-grid">
+                            <div id="jvfIoTraceInspectorCode">
+                                <textarea id="ace-trace-inspector"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-dark text-white">
+                    <p class="me-auto">jvf.io()</p>
+                    <button class="btn btn-info" type="button" v-on:click="ShowHelp">
+                        <i class="icon jvf-icon-question-mark"></i> 
+                        {{ helpText }}
+                    </button>
+                    <button class="btn btn-success" type="button" v-on:click="RunTrace">
+                        <i class="icon jvf-icon-athletics"></i> 
+                        Run Trace
+                    </button>
+                    <button class="btn btn-warning" type="button" v-on:click="StopTrace" :disabled="!readyToView">
+                        <i class="icon jvf-icon-search-content"></i>
+                        Stop and View
+                    </button>
+                    <button class="btn btn-danger" type="button" data-bs-dismiss="modal">
+                        <i class="icon jvf-icon-d-remove-1"></i> 
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>

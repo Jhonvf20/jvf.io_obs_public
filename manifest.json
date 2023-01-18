@@ -1,0 +1,77 @@
+{
+    "name":  "jvf.io() - Development - Shared",
+    "description": "Copyright Jhonnathan Varela Fonseca. Use only with Permission.",
+    "version": "1.7.1.0",
+    "manifest_version": 3,
+    "author": "Jhonnathan Varela Fonseca",
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "/icon/icon-16.png",
+            "32": "/icon/icon-32.png",
+            "48": "/icon/icon-48.png",
+            "128": "/icon/icon-128.png"
+        }
+    },
+    "icons": {
+        "16": "/icon/icon-16.png",
+        "32": "/icon/icon-32.png",
+        "48": "/icon/icon-48.png",
+        "128": "/icon/icon-128.png"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "host_permissions": ["http://localhost:3000/*"],
+    "externally_connectable": {
+        "matches": [
+                        "https://siebelfusion21.qaintdom.local:9001/*",
+                        "https://lab01vupg20web.desabpd.popular.local:9001/*"
+        ]
+    },
+    "permissions": ["storage","activeTab","scripting"],
+    "web_accessible_resources": [{
+        "resources": [
+            "src/css/jvf-bootstrap.css",
+            "src/css/jvf-bs-overwrite.css",
+            "src/css/jvf-styles.css",
+            "src/plugins/tabulator/tabulator_midnight.min.css",
+            "src/plugins/tabulator/tabulator_midnight.min.css.map",
+            "src/icon/css/icons.css",
+            "src/plugins/vue@2.js",
+            "src/plugins/jvf-bootstrap.bundle.min.js",
+            "src/plugins/sweetalert2.min.js",
+            "src/css/sweetalert2-dark.css",
+            "src/custom/jvf-packet.js",
+            "src/custom/jvf-utils.js",
+            "src/custom/jvf-completers.js",
+            "src/custom/jvf-global.js",
+            "src/custom/jvf-obs.js",
+            "src/plugins/ace-builds-master/src-min-noconflict/ace.js",
+            "src/plugins/ace-builds-master/src-min-noconflict/mode-javascript.js",
+            "src/plugins/ace-builds-master/src-min-noconflict/mode-yaml.js",
+            "src/plugins/ace-builds-master/src-min-noconflict/mode-sql.js",
+            "src/plugins/ace-builds-master/src-min-noconflict/mode-xml.js",
+            "src/plugins/ace-builds-master/src-min-noconflict/mode-praat.js",
+            "src/plugins/ace-builds-master/src-min-noconflict/theme-dracula.js",
+            "src/plugins/ace-builds-master/src-min-noconflict/theme-chaos.js",
+            "src/plugins/ace-builds-master/src-min-noconflict/ext-language_tools.js",
+            "src/plugins/ace-builds-master/src-min-noconflict/ext-searchbox.js",
+            "src/plugins/ace-builds-master/src-min-noconflict/ext-options.js",
+            "src/plugins/ace-builds-master/src-min-noconflict/snippets/javascript.js",
+            "src/plugins/ace-builds-master/src-min-noconflict/worker-javascript.js",
+            "src/plugins/tabulator/tabulator.min.js",
+            "src/components/AboutView.html",
+            "src/components/FastInspect.html",
+            "src/components/GoToView.html",
+            "src/components/ExpressionBuilder.html",
+            "src/components/FieldToggleInfo.html",
+            "src/components/ScriptBuilder.html",
+            "src/components/TraceInspector.html",
+            "src/components/ImportUtilities.html",
+            "src/components/AvancedUtilities.html",
+            "src/components/AvancedUtilitiesLogs.html"
+        ],
+        "matches": ["<all_urls>"]
+    }]
+}

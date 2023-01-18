@@ -1,0 +1,133 @@
+:root {
+  --jvf-red-danger: #ec250d;
+  --jvf-blue-info: #3358f4;
+  --jvf-green-success: #00f054;
+  --jvf-yellow-warning: #ff6491;
+}
+
+/* Buttons Styles */
+
+.jvf-bootstrap .btn-danger {
+  background-image: linear-gradient(
+    to bottom left,
+    var(--jvf-danger),
+    var(--jvf-red-danger),
+    var(--jvf-danger)
+  );
+  background-size: 210% 210%;
+  background-position: top right;
+}
+
+.jvf-bootstrap .btn-info {
+  background-image: linear-gradient(
+    to bottom left,
+    var(--jvf-info),
+    var(--jvf-blue-info),
+    var(--jvf-info)
+  );
+  background-size: 210% 210%;
+  background-position: top right;
+  border: none;
+  color: var(--jvf-lighter);
+  background-color: var(--jvf-info);
+}
+
+.jvf-bootstrap .btn-success {
+  background-image: linear-gradient(
+    to bottom left,
+    var(--jvf-success),
+    var(--jvf-green-success),
+    var(--jvf-success)
+  );
+  background-size: 210% 210%;
+  background-position: top right;
+  border: none;
+  color: var(--jvf-dark);
+}
+
+.jvf-bootstrap .btn-warning {
+  background-image: linear-gradient(
+    to bottom left,
+    var(--jvf-warning),
+    var(--jvf-yellow-warning),
+    var(--jvf-warning)
+  );
+  background-size: 210% 210%;
+  background-position: top right;
+  border: none;
+  color: var(--jvf-lighter);
+}
+
+.jvf-bootstrap .btn-purple {
+  background-image: linear-gradient(
+    to bottom left,
+    var(--jvf-purple),
+    var(--jvf-indigo),
+    var(--jvf-purple)
+  );
+  color: var(--jvf-light);
+  background-size: 210% 210%;
+  background-position: top right;
+  border: none;
+}
+
+.jvf-bootstrap .btn-orange {
+  background-image: linear-gradient(
+    to bottom left,
+    var(--jvf-orange),
+    var(--jvf-warning),
+    var(--jvf-orange)
+  );
+  color: var(--jvf-light);
+  background-size: 210% 210%;
+  background-position: top right;
+  border: none;
+}
+
+.jvf-bootstrap .btn-light {  
+  border: none;
+}
+
+/* Hover Buttons */
+
+.jvf-bootstrap .btn-danger:hover {
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 40%);
+  transform: translateY(-1px);
+}
+
+.jvf-bootstrap .btn-info:hover {
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 40%);
+  transform: translateY(-1px);
+  color: var(--jvf-lighter);
+  background-color: var(--jvf-info);
+}
+
+.jvf-bootstrap .btn-success:hover {
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 40%);
+  transform: translateY(-1px);
+  color: var(--jvf-dark);
+}
+
+.jvf-bootstrap .btn-warning:hover {
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 40%);
+  transform: translateY(-1px);
+  color: var(--jvf-lighter);
+}
+
+.jvf-bootstrap .btn-purple:hover {
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 40%);
+  transform: translateY(-1px);
+  border: none;
+}
+
+.jvf-bootstrap .btn-orange:hover {
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 40%);
+  transform: translateY(-1px);
+  border: none;
+}
+
+.jvf-bootstrap .btn-light:hover {
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 40%);
+  transform: translateY(-1px);
+  border: none;
+}

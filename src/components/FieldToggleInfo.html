@@ -1,0 +1,75 @@
+<!-- Modal -->
+<div class="jvf-bootstrap">
+    <div class="modal fade" id="jvfIoFieldInfoModal" aria-labelledby="jvfIoFieldInfo-label">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" id="jvfIoFieldInfoVue">
+                <div class="modal-header text-bg-success">
+                    <h5 class="modal-title" id="jvfIoFieldInfo-label" style="font-size: 20px !important;">
+                        <i class="icon jvf-icon-ruler-pencil-1-3 me-1"></i>
+                        Control Info
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-bg-dark">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-success" type="button" v-on:click="GetSql('Select')" :disabled="calculated != '' || mvLink != '' || methodName != ''">
+                                    <i class="icon jvf-icon-magnifier"></i> 
+                                    SQL Select
+                                </button>
+                                <button class="btn btn-info" type="button" v-on:click="GetSql('Update')" :disabled="calculated != '' || mvLink != '' || methodName != ''">
+                                    <i class="icon jvf-icon-pen-01"></i> 
+                                    SQL Update
+                                </button>
+                                <button class="btn btn-danger" type="button" v-on:click="GetSql('Delete')" :disabled="calculated != '' || mvLink != '' || methodName != ''">
+                                    <i class="icon jvf-icon-clear-data"></i> 
+                                    SQL Delete
+                                </button>
+                                <button class="btn btn-light" type="button" v-on:click="GetRelatedCalc()" :disabled="!calculated">
+                                    <i class="icon jvf-icon-magnifier"></i> 
+                                    Get Related Calculated Info
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-8 jvf-about-object-list">
+                            <p>Applet Name: <a href="#" v-on:click="CopyData(appletName)">{{ appletName }}</a></p>
+                            <p>Business Component: <a href="#" v-on:click="CopyData(busCompName)">{{ busCompName }}</a></p>
+                            <p>Label: <a href="#" v-on:click="CopyData(label)">{{ label }}</a></p>
+                            <p>Control Name: <a href="#" v-on:click="CopyData(controlName)">{{ controlName }}</a></p>
+                            <p v-if="fieldName != ''">Field Name: <a href="#" v-on:click="CopyData(fieldName)">{{ fieldName }}</a></p>
+                            <p v-if="calculated != ''">Calculated: <a href="#" v-on:click="CopyData(calculated)">{{ calculated }}</a></p>
+                            <p v-if="mvLink != ''">Multi Value Link: <a href="#" v-on:click="CopyData(mvLink)">{{ mvLink }}</a></p>
+                            <p v-if="destField != ''">Destination Field: <a href="#" v-on:click="CopyData(destField)">{{ destField }}</a></p>
+                            <p v-if="pickList != ''">Pick List: <a href="#" v-on:click="CopyData(pickList)">{{ pickList }}</a></p>
+                            <p v-if="lov != ''">List Of Values: <a href="#" v-on:click="CopyData(lov)">{{ lov }}</a></p>
+                            <p v-if="table != ''">Table: <a href="#" v-on:click="CopyData(table)">{{ table }}</a></p>
+                            <p v-if="join != ''">Join: <a href="#" v-on:click="CopyData(join)">{{ join }}</a></p>
+                            <p v-if="column != ''">Column: <a href="#" v-on:click="CopyData(column)">{{ column }}</a></p>
+                            <p v-if="joinTable != ''">Join Table: <a href="#" v-on:click="CopyData(joinTable)">{{ joinTable }}</a></p>
+                            <p v-if="joinColumn != ''">Join Column: <a href="#" v-on:click="CopyData(joinColumn)">{{ joinColumn }}</a></p>
+                            <p v-if="joinSpec != ''">Join Spec: <a href="#" v-on:click="CopyData(joinSpec)">{{ joinSpec }}</a></p>
+                            <p v-if="methodName != ''">Method Name: <a href="#" v-on:click="CopyData(methodName)">{{ methodName }}</a></p>
+                            <p>Record Id: <a href="#" v-on:click="CopyData(recordId)">{{ recordId }}</a></p>
+                        </div>
+                        <div class="col-12 mt-2" :style="!calculated ? 'display: none;' : ''">
+                            <div id="jvfIoTableImport">
+                                <div id="info-table"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer text-bg-dark">
+                    <p class="me-auto">jvf.io()</p>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                        <i class="icon jvf-icon-d-remove-1"></i>
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="jvf-loader-container" class="jvf-loading" style="display: none;">
+    <div class="jvf-loader"></div>
+</div>

@@ -1,0 +1,38 @@
+<!-- Modal -->
+<div class="jvf-bootstrap">
+    <div class="modal fade" id="jvfIoAboutViewModal" aria-labelledby="jvfIoFastInspec-label">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" id="jvfIoAboutViewVue">
+                <div class="modal-header text-bg-danger">
+                    <h5 class="modal-title" id="jvfIoFastInspec-label" style="font-size: 20px !important;">
+                        <i class="icon jvf-icon-window-paragraph me-1"></i>
+                        About View Utilities
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-bg-dark jvf-about-view-list">
+                    <p>Application Name: <a href="#" v-on:click="CopyData(appName)">{{ appName }}</a></p>
+                    <p>View Name: <a href="#" v-on:click="CopyData(activeViewName)">{{ activeViewName }}</a></p>
+                    <p>Bussiness Object: <a href="#" v-on:click="CopyData(busObjectName)">{{ busObjectName }}</a></p>
+                    <p>Applets: ({{ numApplets }}) / Bussiness Components: ({{ numBusComp }})</p>
+                    <ul class="jvf-list">
+                        <li v-for="(applet, index) in appletAndBCNames">
+                            <a class="jvf-a-applet" href="#" v-on:click="CopyData(applet.appletName)" v-bind:class="{ 'jvf-active' : applet.actualActive }">{{ applet.appletName }}</a>
+                             / 
+                            <a class="jvf-a-bc" href="#" v-on:click="CopyData(applet.busCompName)"  v-bind:class="{ 'jvf-active' : applet.actualActive }">{{ applet.busCompName }}</a>
+                            /
+                            <a class="jvf-a-id" href="#" v-on:click="CopyData(applet.recordId)"  v-bind:class="{ 'jvf-active' : applet.actualActive }">{{ applet.recordId }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer text-bg-dark">
+                    <p class="me-auto">jvf.io()</p>               
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                        <i class="icon jvf-icon-d-remove-1"></i>
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

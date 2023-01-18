@@ -1,0 +1,61 @@
+<div class="jvf-bootstrap">
+    <div id="jvfIoExpBuilderModal" class="modal fade" role="dialog" data-bs-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document">
+            <div id="jvfIoExpBuilderVue" class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h4 class="modal-title" style="font-size: 20px !important;">
+                        <i class="icon jvf-icon-api-3 me-1"></i>
+                        Expression Builder
+                    </h4>
+                    <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-dark text-white">
+                    <div v-if="helpState">
+                        <p>Welcome to Expression Builder</p>
+                        <ul class="jvf-list">
+                            <li>The Expression will run in the current selected applet.</li>
+                            <li>Ctrl + Enter to Save and Run.</li>
+                            <li>The result of the expression will show in the terminal.</li>
+                            <li>The Builder has autocompletition with all the Expression of Siebel.</li>
+                        </ul>
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-text">Expression Snippet</span>
+                        <select class="form-select" @change="LoadSnippet($event)" v-model="selectedSnippet">
+                            <option v-for="(snippet, index) in savedSnippets" :value="snippet.name" :key="index">{{ snippet.name }}</option>
+                        </select>
+                        <button class="btn btn-success" type="button" v-on:click="CreateSnippet">+</button>
+                        <button class="btn btn-danger" type="button" v-on:click="DeleteSnippet"> - </button></div>
+                    <hr />
+                    <div id="jvfIoExpBuilderCode">
+                        <textarea id="ace-code-exp"></textarea>
+                    </div>
+                    <hr />
+                    <div id="jvfIoExpBuilderTerminal">
+                        <textarea id="ace-code-terminal"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer bg-dark text-white">
+                    <p class="me-auto">jvf.io()</p>
+                    <button class="btn btn-info" type="button" v-on:click="ShowHelp">
+                        <i class="icon jvf-icon-question-mark"></i> 
+                        {{ helpText }}
+                    </button>
+                    <button class="btn btn-warning" type="button" v-on:click="SaveSnippet">
+                        <i class="icon jvf-icon-floppy-disk"></i> 
+                        Save
+                    </button>
+                    <button class="btn btn-success" type="button" v-on:click="RunExp">
+                        <i class="icon jvf-icon-athletics"></i> 
+                        Run
+                    </button>
+                    <button class="btn btn-danger" type="button" data-bs-dismiss="modal">
+                        <i class="icon jvf-icon-d-remove-1"></i> 
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
