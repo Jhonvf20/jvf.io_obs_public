@@ -1,1 +1,5 @@
-# jvf.io_obs_public
+# jvf.io() Siebel Chrome Extension
+
+This is a Chrome extension that adds a button to the Siebel UI that allows you invoke amazing utilities.
+
+Read the Documentation: [Documentation in Notion](https://jvarelaf.notion.site/jvf-io-Siebel-Chrome-Utilities-9f838140c4aa47b78783148d74628a03) 
